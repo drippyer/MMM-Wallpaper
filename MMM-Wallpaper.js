@@ -11,6 +11,8 @@ Module.register("MMM-Wallpaper", {
     orientation: "auto",
     caption: true,
     crossfade: true,
+    minWidth: Number.MIN_SAFE_INTEGER,
+    minHeight: Number.MIN_SAFE_INTEGER,
     maxWidth: Number.MAX_SAFE_INTEGER,
     maxHeight: Number.MAX_SAFE_INTEGER,
   },
@@ -158,7 +160,7 @@ Module.register("MMM-Wallpaper", {
       for (var i in image.variants) {
         var variant = image.variants[i];
 
-        if (variant.width > this.config.maxWidth || variant.height > this.config.maxHeight) {
+        if (variant.width > this.config.maxWidth || variant.height > this.config.maxHeight || variant.width < this.config.minWidth || variant.height < this.config.minHeight) {
           break;
         }
 
